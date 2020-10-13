@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="TR">
+
+<head>
+    <title>Corona Virus Data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="d-flex p-2">
+    <div class="jumbotron">
+        <h1 class="display-4">Corona Virus Tracker App</h1>
+        <p class="lead">These information are not current and accurate.</p>
+        <hr class="my-4">
+        <p></p>
+        <p>Total Corona Virus Case : <b><span th:text="${totalCaseCount}" th:remove="tag"></span></b></p>
+        <p>Total Corona Virus Death : <b><span th:text="${totalDeathCount}" th:remove="tag"></span></b></p>
+    </div>
+    <table class="table">
+        <tr>
+            <th scope="col">CityCode</th>
+            <th scope="col">CityName</th>
+            <th scope="col">Cases</th>
+            <th scope="col">Death</th>
+            <th scope="col">Date</th>
+        </tr>
+        <tr th:each="covidModel : ${covidDataModel}">
+            <td th:text="${covidModel.cityCode}"></td>
+            <td th:text="${covidModel.cityName}"></td>
+            <td th:text="${covidModel.caseCount}"></td>
+            <td th:text="${covidModel.deathCount}"></td>
+            <td th:text="${covidModel.date}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
